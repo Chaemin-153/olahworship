@@ -1,0 +1,25 @@
+header
+    a(href="/")
+        img(src="/static/images/olah.png")
+    nav
+        ul
+            li
+                a(href="/worship") Worship
+            li
+                a(href="/members") Members
+            li
+                a(href="/album") Album
+            li
+                a(href="/music") Music
+            li
+                a(href="/gallery") Gallery
+            li
+                a(href="/conti") Worship Conti.
+            if loggedIn
+                li
+                    a(href="/logout") Log Out
+                li
+                    a(href="/profile") Profile
+            else
+                li
+                    a(href="/login") Login

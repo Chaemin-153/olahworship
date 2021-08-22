@@ -1,3 +1,3 @@
 export const member = (req, res) => {
-    return res.render("member");
+    return res.render("member", {pageTitle:"Member"});
 };
