@@ -1,6 +1,8 @@
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path = require("path");
 
+console.log(__dirname);
+
 module.exports = {
   entry: "./src/client/js/main.js",
   mode: "development",
@@ -29,6 +31,12 @@ module.exports = {
       {
         test: /\.scss$/,
         use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
+      },
+      {
+        test: /\.(png|svg|jpg|gif)$/,
+        use: [
+            'file-loader',
+        ],
       },
     ],
   },

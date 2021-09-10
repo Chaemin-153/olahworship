@@ -14,6 +14,7 @@ app.set("view engine", "pug");
 app.set("views", process.cwd() + "/src/views");
 app.use(logger);
 app.use("/static", express.static("assets"));
+app.use("/images", express.static("images"));
 
 app.use("/", globalRouter);
 app.use("/members", membersRouter);

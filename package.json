@@ -24,6 +24,8 @@
     "babel-cli": "^6.26.0",
     "babel-loader": "^8.2.2",
     "css-loader": "^6.2.0",
+    "file-loader": "^6.2.0",
+    "image-webpack-loader": "^7.0.1",
     "mini-css-extract-plugin": "^2.2.0",
     "nodemon": "^2.0.12",
     "sass": "^1.38.0",
