@@ -1,9 +1,19 @@
 extends base.pug
-include mixins/video
 
 block content
-    h2 Welcome this is Members!
-    each video in videos
-        +video(video)
-    else
-        li Sorry nothing found.
+    div.members
+        div.member
+            a(href="/members")
+                img(src="chaemin.jpg")
+            h2 임채민
+            span Worship Leader
+        div.member
+            a(href="/members")
+                img(src="chaemin.jpg")
+            h2 임채민
+            span Worship Leader
+        div.member
+            a(href="/members")
+                img(src="chaemin.jpg")
+            h2 임채민
+            span Worship Leader

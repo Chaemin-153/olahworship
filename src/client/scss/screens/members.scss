@@ -1,0 +1,19 @@
+.members {
+	display: flex;
+	justify-content: space-around;
+
+	.member {
+		img {
+			width: 297px;
+			height: 397px;
+		}
+		h2 {
+			font-size: 18px;
+			padding: 10px 0px;
+			opacity: 0.8;
+		}
+		span {
+			opacity: 0.6;
+		}
+	}
+}

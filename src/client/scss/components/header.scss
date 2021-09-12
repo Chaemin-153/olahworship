@@ -1,8 +1,9 @@
 header {
-	padding: 20px 50px;
+	padding: 10px 50px;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	background-color: #1d1d1dc9;
 	ul {
 		display: flex;
 		justify-content: space-between;
@@ -16,8 +17,8 @@ header {
 		}
 	}
 	img {
-		width: 110px;
-		height: 110px;
+		width: 70px;
+		height: 70px;
 		border-radius: 50%;
 	}
 }
