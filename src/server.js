@@ -15,6 +15,8 @@ app.set("views", process.cwd() + "/src/views");
 app.use(logger);
 app.use("/static", express.static("assets"));
 app.use("/images", express.static("src/images"));
+app.use("/uploads", express.static("uploads"));
+app.use(express.urlencoded({ extended: true }));
 
 app.use("/", globalRouter);
 app.use("/members", membersRouter);

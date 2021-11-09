@@ -3,14 +3,16 @@ import {
     home,
     worship, 
     members, 
-    album, 
-    music, 
+    album,
     gallery, 
     conti, 
     login, 
     logout,
-    profile 
+    profile, 
+    getMusic,
+    postMusic
 } from "../controllers/globalController";
+import { uploadFiles } from "../middlewares";
 
 const globalRouter = express.Router();
 
@@ -18,7 +20,10 @@ globalRouter.get("/", home);
 globalRouter.get("/worship", worship);
 globalRouter.get("/members", members);
 globalRouter.get("/album", album);
-globalRouter.get("/music", music);
+globalRouter
+    .route("/music")
+    .get(getMusic)
+    .post(uploadFiles.single("upload") ,postMusic);
 globalRouter.get("/gallery", gallery);
 globalRouter.get("/conti", conti);
 globalRouter.get("/login", login);

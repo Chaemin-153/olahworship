@@ -1,4 +1,14 @@
 extends base.pug
+include mixins/sheet
 
 block content
-    h1 Music!
+    div
+        a(href="/music/upload") Upload Music
+    div.music
+        img(src=image)
+        form(method="POST", enctype="multipart/form-data")
+            label(for="upload") Upload
+            input(type="file", id="upload", name="upload", accept="image/*")
+            input(type="submit", value="Upload Music")
+    each sheet in sheets
+        +sheet(sheet)

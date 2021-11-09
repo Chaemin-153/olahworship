@@ -1,9 +1,9 @@
 import express from "express";
-import { seeMusic, uploadMusic } from "../controllers/musicController";
+import { getUploadMusic, postUploadMusic, seeMusic } from "../controllers/musicController";
 
 const musicRouter = express.Router();
 
-musicRouter.get("/upload", uploadMusic);
-musicRouter.get("/see/:id", seeMusic);
+musicRouter.route("/upload").get(getUploadMusic).post(postUploadMusic);
+musicRouter.get("/:id", seeMusic);
 
 export default musicRouter;

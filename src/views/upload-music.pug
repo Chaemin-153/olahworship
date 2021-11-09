@@ -1,4 +1,6 @@
 extends base.pug
 
 block content
-    h1 Upload Music!
+    form(method="POST", action="/music/upload")
+        input(placeholder="Title", required, type="text", name="title")
+        input(type="submit", value="Upload Music") 
