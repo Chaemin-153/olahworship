@@ -1,4 +1,8 @@
 extends base.pug
+include mixins/sheet
 
 block content
-    h3 #{sheet.views} views.
+    div
+        p=sheet.description 
+        small=sheet.createdAt 
+    a(href=`${sheet.id}/edit`) Edit Sheet &rarr; 

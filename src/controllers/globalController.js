@@ -1,29 +1,4 @@
-export let sheets = [
-	{
-		title: "First Video",
-		rating: 5,
-		comments: 2,
-		createdAt: "2 minutes ago",
-		views: 59,
-		id: 1,
-	},
-	{
-		title: "Second Video",
-		rating: 5,
-		comments: 2,
-		createdAt: "2 minutes ago",
-		views: 59,
-		id: 2,
-	},
-	{
-		title: "Third Video",
-		rating: 5,
-		comments: 2,
-		createdAt: "2 minutes ago",
-		views: 59,
-		id: 3,
-	},
-];
+import Sheet from "../models/Sheet";
 
 export const home = (req, res) => {
 	return res.render("home", { pageTitle: "Home" });
@@ -34,47 +9,23 @@ export const worship = (req, res) => {
 };
 
 export const members = (req, res) => {
-	const videos = [
-		{
-			title: "First Video",
-			rating: 5,
-			comments: 2,
-			createdAt: "2 minutes ago",
-			views: 59,
-			id: 1,
-		},
-		{
-			title: "Second Video",
-			rating: 5,
-			comments: 2,
-			createdAt: "2 minutes ago",
-			views: 59,
-			id: 1,
-		},
-		{
-			title: "Third Video",
-			rating: 5,
-			comments: 2,
-			createdAt: "2 minutes ago",
-			views: 59,
-			id: 1,
-		},
-	];
-	return res.render("members", { pageTitle: "Members", videos });
+	return res.render("members", { pageTitle: "Members" });
 };
 
 export const album = (req, res) => {
 	return res.render("album", { pageTitle: "Album" });
 };
 
-export const getMusic = (req, res) => {
+export const getMusic = async (req, res) => {
+	const sheets = await Sheet.find({});
+	console.log(sheets);
 	return res.render("music", { pageTitle: "Music", sheets });
 };
 
 export const postMusic = (req, res) => {
 	const image = req.file.path;
 	console.log(req.file);
-	return res.render("music", { pageTitle: "Music", image, sheets });
+	return res.render("music", { pageTitle: "Music", image });
 };
 
 export const gallery = (req, res) => {

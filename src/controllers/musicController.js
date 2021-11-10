@@ -1,26 +1,29 @@
-import { sheets } from "./globalController";
+import Sheet from "../models/Sheet";
 
-export const getUploadMusic = (req, res) => {
-    return res.render("upload-music", {pageTitle:"Upload Music"});
+export const getUploadMusic = async (req, res) => {
+	const sheets = await Sheet.find({});
+	return res.render("upload-music", { pageTitle: "Upload Music", sheets });
 };
 
-export const postUploadMusic = (req, res) => {
-    const { title } = req.body;
-    const newMusic = {
-      title,
-      rating: 0,
-      comments: 0,
-      createdAt: "just now",
-      views: 0,
-      id: sheets.length + 1,
-  };
-  console.log(newMusic);
-  sheets.push(newMusic);
-  return res.redirect("/music");
+export const postUploadMusic = async (req, res) => {
+	const { title, description, hashtags } = req.body;
+	try {
+		await Sheet.create({
+			title,
+			description,
+			hashtags: hashtags.split(",").map((word) => `#${word}`),
+		});
+		return res.redirect("/music");
+	} catch (error) {
+		return res.render("upload-music", {
+			pageTitle: "Upload Music",
+			errorMessage: error._message,
+		});
+	}
 };
 
-export const seeMusic = (req, res) => {
-    const {id} = req.params;
-    const sheet = sheets[id-1];
-    return res.render("see-music", {pageTitle:`Watch ${sheet.title}`, sheet});
+export const seeMusic = async (req, res) => {
+	const { id } = req.params;
+	const sheet = await Sheet.findById(id);
+	return res.render("see-music", { pageTitle: sheet.title, sheet });
 };

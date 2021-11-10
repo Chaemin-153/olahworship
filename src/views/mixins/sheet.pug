@@ -2,8 +2,6 @@ mixin sheet(sheet)
     div
         h4
             a(href=`/music/${sheet.id}`)=sheet.title 
-        ul 
-            li #{sheet.rating}/5
-            li #{sheet.comments} comments.
-            li Posted #{sheet.createdAt}.
-            li #{sheet.view} views.
+        p=sheet.description 
+        small=sheet.createdAt 
+        hr

@@ -10,5 +10,7 @@ block content
             label(for="upload") Upload
             input(type="file", id="upload", name="upload", accept="image/*")
             input(type="submit", value="Upload Music")
-    each sheet in sheets
+    each sheet in sheets 
         +sheet(sheet)
+    else
+        li Sorry nothing found.
