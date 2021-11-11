@@ -1,0 +1,8 @@
+extends base
+block content
+    h4 Update Sheet
+    form(method="POST")
+        input(name="title", placeholder="Sheet Title", value=sheet.title, required)
+        input(placeholder="Description", required, type="text", name="description",value=sheet.description)
+        input(placeholder="Hashtags", required, type="text", name="hashtags", value=sheet.hashtags.join())
+        input(value="Save",type="submit") 
