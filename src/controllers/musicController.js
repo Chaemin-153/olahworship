@@ -11,7 +11,7 @@ export const postUploadMusic = async (req, res) => {
 		await Sheet.create({
 			title,
 			description,
-			hashtags: hashtags.split(",").map((word) => `#${word}`),
+			hashtags: Sheet.formatHashtags(hashtags),
 		});
 		return res.redirect("/music");
 	} catch (error) {
@@ -50,9 +50,26 @@ export const postEditMusic = async (req, res) => {
 	await Sheet.findByIdAndUpdate(id, {
 		title,
 		description,
-		hashtags: hashtags
-			.split(",")
-			.map((word) => (word.startsWith("#") ? word : `#${word}`)),
+		hashtags: Sheet.formatHashtags(hashtags),
 	});
 	return res.redirect(`/music/${id}`);
+};
+
+export const deleteMusic = async (req, res) => {
+	const { id } = req.params;
+	await Sheet.findByIdAndDelete(id);
+	return res.redirect("/music");
+};
+
+export const searchMusic = async (req, res) => {
+	const { keyword } = req.query;
+	let sheets = [];
+	if (keyword) {
+		sheets = await Sheet.find({
+			title: {
+				$regex: new RegExp(keyword, "i"),
+			},
+		});
+	}
+	return res.render("search", { pageTitle: "Search", sheets });
 };

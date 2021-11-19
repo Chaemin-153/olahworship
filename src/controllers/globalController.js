@@ -17,14 +17,12 @@ export const album = (req, res) => {
 };
 
 export const getMusic = async (req, res) => {
-	const sheets = await Sheet.find({});
-	console.log(sheets);
+	const sheets = await Sheet.find({}).sort({ createdAt: "desc" });
 	return res.render("music", { pageTitle: "Music", sheets });
 };
 
 export const postMusic = (req, res) => {
 	const image = req.file.path;
-	console.log(req.file);
 	return res.render("music", { pageTitle: "Music", image });
 };
 

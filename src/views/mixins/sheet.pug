@@ -3,5 +3,8 @@ mixin sheet(sheet)
         h4
             a(href=`/music/${sheet.id}`)=sheet.title 
         p=sheet.description 
+        ul
+            each hashtag in sheet.hashtags 
+                li=hashtag
         small=sheet.createdAt 
         hr
